@@ -1,0 +1,19 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Generated files (traffic runs, span exports, eval results)
+data/
+
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store

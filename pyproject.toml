@@ -1,0 +1,43 @@
+[tool.poetry]
+name = "se-interview"
+version = "0.2.0"
+description = "A LangGraph travel agent with web search, weather forecast and currency tools"
+authors = ["Your Name <your.email@example.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.14"
+langgraph = "^0.2"
+langchain = "^0.3"
+langchain-community = "^0.3"
+langchain-anthropic = "^0.3.22"
+ddgs = "^9.0"
+python-dotenv = "^1.0"
+fastapi = "^0.115"
+uvicorn = "^0.32"
+# Step 2: used directly by the new tools (already installed transitively; now explicit)
+httpx = ">=0.27,<1"
+pydantic = "^2.7"
+# Step 3: Phoenix / OpenInference tracing
+arize-phoenix-otel = ">=0.13"
+openinference-instrumentation-langchain = ">=0.1.50"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0"
+respx = ">=0.21"
+
+# Steps 4-5: traffic generation, span export and Phoenix evals (run as scripts, not by the API)
+[tool.poetry.group.evals.dependencies]
+arize-phoenix-client = ">=1.20"
+arize-phoenix-evals = ">=2.0"
+pandas = ">=2.2"
+
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
